@@ -4,7 +4,7 @@ pipeline {
         maven 'maven3'
      }
      stages{
-         stage('Build'){
+         stage('Upload War To Nexus'){
              steps{
                  sh 'mvn clean package' //exécution de cette commande grâce au shell
              }
