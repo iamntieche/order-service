@@ -20,7 +20,7 @@ pipeline {
                         ]
                     ], 
                     credentialsId: 'nexus3', 
-                    groupId: 'com.mfoumgroup', 
+                    groupId: 'mfoumgroup', 
                     nexusUrl: 'localhost:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
