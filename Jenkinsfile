@@ -13,7 +13,7 @@ pipeline {
              steps{
                  script{
                      def mavenPom = readMavenPom file: 'pom.xml' //permet de lire le fichier pom.xml
-                     def nexusRepoName = mavenPom.version.endswith("SNAPSHOT") ? "order-service-snapshot" : "order-service-release"
+                     def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "order-service-snapshot" : "order-service-release"
                      nexusArtifactUploader artifacts: [
                          [
                              artifactId: 'order-service', 
