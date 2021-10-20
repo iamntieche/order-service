@@ -11,11 +11,12 @@ pipeline {
          }
          stage('Upload Jar To Nexus'){
              steps{
+                 def mavenPom = readMavenPom 'pom.xml' //permet de lire le fichier pom.xml
                      nexusArtifactUploader artifacts: [
                          [
                              artifactId: 'order-service', 
                              classifier: '', 
-                             file: 'target/order-service-1.0.0.jar',
+                             file: "target/order-service-${mavenPom.version}.jar",
                              type: 'jar'
                         ]
                     ], 
@@ -25,7 +26,7 @@ pipeline {
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'order-service-release', 
-                    version: '1.0.0'
+                    version: "${mavenPom.version}"
              }
 
          }
