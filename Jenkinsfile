@@ -24,7 +24,7 @@ pipeline {
                     nexusUrl: 'localhost:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: 'http://localhost:8081/repository/order-service-release', 
+                    repository: 'order-service-release', 
                     version: '1.0.0'
              }
 
