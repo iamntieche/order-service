@@ -3,6 +3,9 @@ pipeline {
      tools { //permet d'activer le patch maven
         maven 'maven3'
      }
+     options {
+        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
+     }
      stages{
          stage('Build'){
              steps{
