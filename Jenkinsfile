@@ -13,7 +13,7 @@ pipeline{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonar-pwd', , envOnly: true) 
                     {
-                      // sh "mvn sonar:sonar"
+                       sh "mvn sonar:sonar"
                         //println ${env.SONAR_HOST_URL} 
                     }
                 }
