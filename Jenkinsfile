@@ -11,7 +11,7 @@ pipeline{
 
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonarqube-password') 
+                    withSonarQubeEnv(credentialsId: 'sonar-pwd') 
                     {
                        sh "mvn sonar:sonar"
                     }
