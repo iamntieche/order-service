@@ -17,12 +17,9 @@ pipeline {
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
                     } 
+                    //build project
+                    sh 'mvn clean package'
                  }
-             }
-         }
-         stage('Build'){
-             steps{
-                 sh 'mvn clean package' //exécution de cette commande grâce au shell
              }
          }
      }
