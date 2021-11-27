@@ -17,9 +17,6 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
-		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.projectKey>Order-Service</sonar.projectKey>
-		<sonar.projectName>Order-Service</sonar.projectName>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,14 +55,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api -->
-		<dependency>
-			<groupId>org.sonarsource.sonarqube</groupId>
-			<artifactId>sonar-plugin-api</artifactId>
-			<version>9.2.1.49989</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -82,7 +71,15 @@
 					</excludes>
 				</configuration>
 			</plugin>
-						
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin> 
+			<plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>		
 		</plugins>
 	</build>
 
