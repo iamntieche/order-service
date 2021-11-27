@@ -13,7 +13,7 @@ pipeline{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonarqube-password') 
                     {
-                       sh "mvn sonar:sonar -Dsonar.login=25260e63bfb975694e98bba03fb4c3c5c7441b51"
+                       sh "mvn sonar:sonar"
                     }
                 }
             }
