@@ -16,6 +16,9 @@
 	<description>service de gestion de commande</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.projectKey>Order-Service</sonar.projectKey>
+		<sonar.projectName>Order-Service</sonar.projectName>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,6 +54,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api -->
+		<dependency>
+			<groupId>org.sonarsource.sonarqube</groupId>
+			<artifactId>sonar-plugin-api</artifactId>
+			<version>8.1.0.31237</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
