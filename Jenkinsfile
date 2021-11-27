@@ -11,9 +11,10 @@ pipeline{
 
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-pwd') 
+                    withSonarQubeEnv(credentialsId: 'sonar-pwd', , envOnly: true) 
                     {
-                       sh "mvn sonar:sonar -Dsonar.host=http://localhost:9000"
+                      // sh "mvn sonar:sonar"
+                        println ${env.SONAR_HOST_URL} 
                     }
                 }
             }
