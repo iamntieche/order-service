@@ -27,6 +27,7 @@ pipeline {
          stage('docker build && docker push'){
              steps{ //push a image with IP nexus docker host
                 script{
+                    sh 'cp -r ../order-service/target .'
                     withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_password')]) {
                     sh '''
                     docker build -t 192.168.16.1:8083/order-service:${VERSION} .
