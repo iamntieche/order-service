@@ -30,7 +30,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_password')]) {
                     sh '''
                     docker build -t 192.168.16.1:8083/order-service:${VERSION} .
-                    docker login --username mfoumgroup ----password-stdin $docker_password 192.168.16.1:8083  
+                    docker login --username mfoumgroup ----password $docker_password 192.168.16.1:8083  
                     docker push  192.168.16.1:8083/order-service:${VERSION}
                     docker rmi   192.168.16.1:8083/order-service:${VERSION}
                    ''' 
