@@ -1,5 +1,6 @@
-FROM tomcat 
-WORKDIR webapps 
-COPY target/order-service-0.0.1-SNAPSHOT.jar  .
-RUN rm -rf ROOT && mv order-service-0.0.1-SNAPSHOT.jar  ROOT.jar
-ENTRYPOINT ["sh", "/usr/local/tomcat/bin/startup.sh"]
+FROM adoptopenjdk/openjdk11:latest
+WORKDIR /work
+COPY . .
+COPY /target/order-service-3.0.0-SNAPSHOT.jar order-service.jar
+ENTRYPOINT ["java", "-jar", "order-service.jar"]
+
