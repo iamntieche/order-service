@@ -1,5 +1,8 @@
 pipeline {
      agent any
+     environment{
+         VERSION = "${env.BUILD_ID}"
+     }
      tools { //permet d'activer le patch maven
         maven 'maven3'
      }
@@ -17,9 +20,23 @@ pipeline {
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
                     } 
-                    //build project
-                    sh 'mvn clean package'
+                     sh 'mvn clean package' 
                  }
+             }
+         }
+         stage('docker build && docker push'){
+             steps{ //push a image with IP nexus docker host
+                script{
+                    withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_password')]) {
+                    sh '''
+                    docker build -t 192.168.16.1:8083/order-service:${VERSION} .
+                    docker login -u mfoumgroup -p $docker_password 192.168.16.1:8083  
+                    docker push  192.168.16.1:8083/order-service:${VERSION}
+                    docker rmi   192.168.16.1:8083/order-service:${VERSION}
+                   ''' 
+                     }
+                }
+              
              }
          }
      }
